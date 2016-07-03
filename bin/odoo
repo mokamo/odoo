@@ -2,5 +2,5 @@
 ROOT=$(dirname $0)/..
 PYTHON=$ROOT/env/bin/python
 ODOO=$ROOT/src/odoo/odoo.py
-$PYTHON $ODOO -c $ROOT/akred.cfg"$*"
+$PYTHON $ODOO -c $ROOT/ekred.cfg"$*"
 exit $?
