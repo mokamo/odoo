@@ -1,0 +1,28 @@
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="product_template_form_inherit" model="ir.ui.view">
+            <field name="name">product template form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <label for="qty_available" position="before">
+                    <field name="least_quantity" help="This field allows you to be alerted on tree view when the quantity you have in stock is less than this number the column of product in tree view will be in red color"/>
+                </label>
+            </field>
+        </record>
+        <record id="product_template_inherit_tree" model="ir.ui.view">
+            <field name="name">product template tree</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <tree position="attributes">
+                    <attribute name="colors" translation="off">red:qty_available&lt;=least_quantity;blue:virtual_available&gt;=0 and state in ('draft', 'end', 'obsolete');black:virtual_available&gt;=0 and state not in ('draft', 'end', 'obsolete')</attribute>
+                </tree>
+                <field name="uom_id" position="after">
+                    <field name="least_quantity" invisible="1"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
