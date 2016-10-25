@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Warehouse updates",
+    'name': "Product Tree Color",
 
     'summary': """
-        Warehouse updtaes""",
+        Product Update in Tree color Based on quantity on hand and least quantity user input""",
 
     'description': """
         This module make the product row in tree view
@@ -17,7 +17,7 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
     # for the full list
-    'category': 'test',
+    'category': 'product',
     'version': '0.1',
 
     # any module necessary for this one to work correctly
