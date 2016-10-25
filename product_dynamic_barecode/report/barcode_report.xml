@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Custom report.-->
+<openerp>
+    <data>
+        <report
+                id="custom_barcode_report"
+                model="barcode.report"
+                report_type="qweb-pdf"
+                string="Barcode Report"
+                name="product_dynamic_barecode.barcode_report"
+        />
+        <template id="barcode_report">
+            <t t-call="report.html_container">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <t dir="ltr" t-foreach="mydocs" t-as="product_table">
+                            <table dir="ltr" style="width:auto;">
+                                <t t-foreach="product_table['rows']" t-as="o">
+                                    <tr>
+                                        <t t-foreach="product_table['columns']" t-as="o">
+                                            <td align="center">
+                                                <table style="border: 1px solid #000000;">
+                                                    <tr align="center">
+                                                        <span t-esc="product_table['product_name']"
+                                                              style="text-align:center;"/>
+                                                    </tr>
+                                                    <br/>
+                                                    <tr align="center">
+                                                        <span t-esc="product_table['default_code']"
+                                                              style="text-align:center;"/>
+                                                    </tr>
+                                                    <tr align="center">
+                                                        <div style="width:auto;margin-right:0px">
+                                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', product_table['ean13'], product_table['width'], product_table['height'])"/>
+                                                        </div>
+                                                    </tr>
+                                                    <tr align="center">
+                                                        <span t-esc="product_table['ean13']"
+                                                              style="text-align:center;"/>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <br/>
+                                        </th>
+                                    </tr>
+                                </t>
+                            </table>
+                        </t>
+                        <br/>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</openerp>

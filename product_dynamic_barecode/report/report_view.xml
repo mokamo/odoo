@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Custom report.-->
+<openerp>
+    <data>
+        <record id="barcode_report_action" model="ir.actions.act_window">
+            <field name="name">Barcode Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">barcode.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{'product_id':active_id}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+            </field>
+        </record>
+
+
+        <record model="ir.values" id="product_print_barcode_print">
+            <field name="model_id" ref="product.model_product_product"/>
+            <field name="name">Barcode Print</field>
+            <field name="key2">client_print_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+ str(ref('barcode_report_action'))"/>
+            <field name="key">action</field>
+            <!--<field name="context">{'product_id':active_id}</field>-->
+            <field name="model">product.product</field>
+        </record>
+
+        <!--<menuitem id="cbpo_barcode_report_compute" name="Barcode Report" parent="stock.menu_stock_products_menu"-->
+        <!--action="barcode_report_action"-->
+        <!--sequence="41"/>-->
+        <record id="barcode_compute_report_view" model="ir.ui.view">
+            <field name="name">Barcode Report</field>
+            <field name="model">barcode.report</field>
+            <field name="arch" type="xml">
+                <form string="Barcode Report ">
+                    <sheet>
+                        <group>
+                            <field name="product_id"/>
+                        </group>
+                        <group col="4">
+                            <field name="number_of_rows"/>
+                            <field name="number_of_columns"/>
+                            <field name="width"/>
+                            <field name="height"/>
+                            <button string="Print" type="object" name="compute_barcode_data" icon="gtk-print"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>
