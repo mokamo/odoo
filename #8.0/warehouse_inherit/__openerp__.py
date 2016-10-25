@@ -6,7 +6,9 @@
         Warehouse updtaes""",
 
     'description': """
-        Long description of module's purpose
+        This module make the product row in tree view
+        becomes red when the quantity reached the least quantity
+        that user input
     """,
 
     'author': "mohamed.sharafa.mo@gmail.com",
