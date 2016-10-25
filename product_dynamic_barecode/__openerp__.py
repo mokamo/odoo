@@ -7,7 +7,6 @@
     'author': "mohamed.sharafa.mo@gmail.com",
     'website': "https://eg.linkedin.com/in/mohamedsharafmo",
     'category': 'Product',
-    'images': [],
     'depends': ['base', 'stock', 'product'],
     'data': ['report/report_view.xml','report/barcode_report.xml'],
     'demo': [],
