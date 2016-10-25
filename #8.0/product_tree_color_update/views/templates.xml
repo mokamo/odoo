@@ -20,7 +20,7 @@
                     <attribute name="colors" translation="off">red:qty_available&lt;=least_quantity;blue:virtual_available&gt;=0 and state in ('draft', 'end', 'obsolete');black:virtual_available&gt;=0 and state not in ('draft', 'end', 'obsolete')</attribute>
                 </tree>
                 <field name="uom_id" position="after">
-                    <field name="least_quantity"/>
+                    <field name="least_quantity" invisible="1"/>
                 </field>
             </field>
         </record>
