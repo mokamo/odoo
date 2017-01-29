@@ -7,7 +7,8 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
                 <label for="qty_available" position="before">
-                    <field name="least_quantity" help="This field allows you to be alerted on tree view when the quantity you have in stock is less than this number the column of product in tree view will be in red color"/>
+                    <field name="least_quantity"
+                           help="This field allows you to be alerted on tree view when the quantity you have in stock is less than this number the column of product in tree view will be in red color"/>
                 </label>
             </field>
         </record>
@@ -17,12 +18,41 @@
             <field name="inherit_id" ref="product.product_template_tree_view"/>
             <field name="arch" type="xml">
                 <tree position="attributes">
-                    <attribute name="colors" translation="off">red:qty_available&lt;=least_quantity;blue:virtual_available&gt;=0 and state in ('draft', 'end', 'obsolete');black:virtual_available&gt;=0 and state not in ('draft', 'end', 'obsolete')</attribute>
+                    <attribute name="colors" translation="off">red:qty_available&lt;=least_quantity;blue:virtual_available&gt;=0
+                        and state in ('draft', 'end', 'obsolete');black:virtual_available&gt;=0 and state not in
+                        ('draft', 'end', 'obsolete')
+                    </attribute>
                 </tree>
                 <field name="uom_id" position="after">
                     <field name="least_quantity" invisible="1"/>
                 </field>
             </field>
         </record>
+        <record model="ir.ui.view" id="product_template_kanban_color_view">
+            <field name="name">Product Template Kanban Stock</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_kanban_view"/>
+            <field name="arch" type="xml">
+                <field name="lst_price" position="after">
+                    <field name="type"/>
+                    <field name="least_quantity"/>
+                    <field name="qty_available"/>
+                </field>
+                <!--<ul position="inside">-->
+                    <!--<li t-if="record.type.raw_value != 'service'">On hand:-->
+                        <!--<field name="qty_available"/>-->
+                        <!--<field name="uom_id"/>-->
+                    <!--</li>-->
+                    <!--<li t-if="record.type.raw_value != 'service'">Forecasted:-->
+                        <!--<field name="virtual_available"/>-->
+                        <!--<field name="uom_id"/>-->
+                    <!--</li>-->
+                <!--</ul>-->
+                <kanban position="attributes">
+                    <attribute name="colors">red:qty_available&lt;=least_quantity;</attribute>
+                </kanban>
+            </field>
+        </record>
+
     </data>
 </openerp>
