@@ -12,7 +12,7 @@
     """,
 
 
-    'author': "mohamed.sharafa.mo@gmail.com",
+    'author': "mohamed.sharaf.mo@gmail.com",
     'website': "https://eg.linkedin.com/in/mohamedsharafmo",
 
     # Categories can be used to filter modules in modules listing
